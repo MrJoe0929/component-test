@@ -1,0 +1,155 @@
+$solid-color: #2967CC;
+$solid-color-hover: #1D4ED8;
+$solid-color-active: #1E40AF;
+$solid-color-loading: #69C0FF;
+$hollow-color: rgba(0, 0, 0, 0.25);
+$hollow-font-color: rgba(0, 0, 0, 0.85);
+$hollow-color-hover: #69C0FF;
+
+// 背景&边框同色
+@mixin border-bg($color) {
+    border: 1px solid $color;
+    background: $color;
+}
+
+/**
+* 主要按钮样式
+*/
+.main-btn {
+    display: inline-block;
+    height: 32px;
+    line-height: 30px;
+    padding: 0px 12px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.45, 0, 0.55, 1);
+    text-align: center;
+    user-select: none;
+    outline: none;
+    margin-right: 8px;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &.main-btn-solid {
+        // border: 1px solid $solid-color;
+        // background: $solid-color;
+        @include border-bg($solid-color);
+        color: #FFFFFF;
+
+        &:hover {
+            @include border-bg($solid-color-hover);
+        }
+
+        &:active {
+            @include border-bg($solid-color-active);
+        }
+
+        &.main-btn-loading,
+        &.main-btn-loading:hover {
+            @include border-bg($solid-color-loading);
+        }
+    }
+
+
+
+    &.main-btn-hollow {
+        border: 1px solid $hollow-color;
+        background: #fff;
+        color: $hollow-font-color;
+
+        &:hover:not(.disabled),
+        &.main-btn-loading {
+            border: 1px solid $hollow-color-hover;
+            color: $hollow-color-hover;
+        }
+    }
+
+    &.main-btn-primary {
+        @include border-bg(#FF4D44);
+        color: #fff;
+
+        &:hover:not(.disabled),
+        &.main-btn-loading {
+            @include border-bg(#FF7875);
+        }
+    }
+
+    .btn-loading {
+        margin-right: 5px;
+    }
+
+    &.disabled {
+        background: #F0F0F0;
+        border: 1px solid #BFBFBF;
+        cursor: auto;
+        color: #BFBFBF;
+    }
+}
+
+.main-text-btn {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    outline: none;
+    margin-right: 8px;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    .btn-loading {
+        margin-right: 5px;
+        position: relative;
+        top: -1px;
+    }
+
+    &.disabled {
+        cursor: auto;
+    }
+}
+
+.main-text-btn-solid {
+
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    color: #1890FF;
+    transition: all .2s cubic-bezier(0.45, 0, 0.55, 1);
+
+    &:not(.main-text-btn-loading):not(.disabled):hover {
+        color: #40A9FF;
+    }
+
+    &:not(.main-text-btn-loading):not(.disabled):active {
+        color: #096DD9;
+    }
+
+    &.disabled {
+        color: #BFBFBF;
+    }
+
+    &.main-text-btn-loading,
+    &.main-text-btn-loading .btn-loading {
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.main-text-btn-hollow {
+    background: none;
+}
+
+.backBtn {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+
+    span {
+        font-size: inherit;
+    }
+
+    span:first-child {
+        margin-right: 16px;
+    }
+}
